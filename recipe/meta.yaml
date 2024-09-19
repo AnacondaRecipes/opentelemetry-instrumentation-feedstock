@@ -1,11 +1,11 @@
 {% set name = "opentelemetry-instrumentation" %}
-{% set version = "0.36b0" %}
+{% set version = "0.48b0" %}
 
 # Common to all opentelemetry python libraries
 {% set vsegments = version.split('.') %}
 # not all packages in opentelemetry are at the most recent version
 {% set preoffset = 19 %}
-{% set patchoffset = 1 %} 
+{% set patchoffset = 1 %}
 {% set is_rel = (vsegments[0] == '1') %}
 {% set canonical_minor_pre = (vsegments[1].split('b')[0] | int) - (preoffset | int) %}
 {% set canonical_minor_rel = (vsegments[1] | int) %}
@@ -30,15 +30,15 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/opentelemetry_instrumentation-{{ version }}.tar.gz
-  sha256: e3ddac9b3b93408ef26c8ecbf38f717042977e16381bb4cd329a5b4cf16998cf
+  sha256: 94929685d906380743a71c3970f76b5f07476eea1834abd5dd9d17abfe23cc35
 
 build:
   number: 0
-  noarch: python
+  skip: True  # [py<38]
   entry_points:
     - opentelemetry-instrument = opentelemetry.instrumentation.auto_instrumentation:run
     - opentelemetry-bootstrap = opentelemetry.instrumentation.bootstrap:run
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed -vvv
 
 requirements:
   host:
@@ -47,7 +47,7 @@ requirements:
     - hatchling
   run:
     - python >=3.7
-    - opentelemetry-api >=1.4,<2.dev0
+    - opentelemetry-api ~=1.4
     - setuptools >=16.0
     - wrapt <2.0.0,>=1.0.0
 
@@ -62,12 +62,19 @@ test:
     - pip
 
 about:
-  home: https://github.com/open-telemetry/opentelemetry-python/tree/master/opentelemetry-instrumentation
+  home: https://github.com/open-telemetry/opentelemetry-python
   summary: Instrumentation Tools & Auto Instrumentation for OpenTelemetry Python
+  license_family: Apache-2.0
   license: Apache-2.0
   license_file: LICENSE.txt
+  description: |
+    OpenTelemetry Instrumentation provides tools and auto-instrumentation for OpenTelemetry Python.
+    This package is intended to be used in conjunction with the OpenTelemetry SDK.
+  dev_url: https://github.com/open-telemetry/opentelemetry-python
+  doc_url: https://opentelemetry.io/docs/getting-started/dev/
 
 extra:
   recipe-maintainers:
+    - rxm7706
     - twoodwark
     - mariusvniekerk
