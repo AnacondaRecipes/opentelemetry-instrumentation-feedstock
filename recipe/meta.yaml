@@ -64,7 +64,7 @@ test:
 about:
   home: https://github.com/open-telemetry/opentelemetry-python
   summary: Instrumentation Tools & Auto Instrumentation for OpenTelemetry Python
-  license_family: Apache-2.0
+  license_family: APACHE
   license: Apache-2.0
   license_file: LICENSE.txt
   description: |
