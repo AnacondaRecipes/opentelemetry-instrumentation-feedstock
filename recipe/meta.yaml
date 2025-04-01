@@ -43,11 +43,11 @@ build:
 
 requirements:
   host:
-    - python {{ python_min }}
+    - python
     - pip
     - hatchling
   run:
-    - python >={{ python_min }}
+    - python
     - opentelemetry-api ~=1.4
     - setuptools >=16.0
     - wrapt <2.0.0,>=1.0.0
