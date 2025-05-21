@@ -1,6 +1,5 @@
 {% set name = "opentelemetry-instrumentation" %}
-{% set version = "0.53b0" %}
-{% set python_min = python_min|default("3.9") %}
+{% set version = "0.41b0" %}
 
 # Common to all opentelemetry python libraries
 {% set vsegments = version.split('.') %}
@@ -30,8 +29,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/opentelemetry_instrumentation-{{ version }}.tar.gz
-  sha256: f2c21d71a3cdf28c656e3d90d247ee7558fb9b0239b3d9e9190266499dbed9d2
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/opentelemetry_instrumentation-{{ version }}.tar.gz
+  sha256: 214382ba10dfd29d4e24898a4c7ef18b7368178a6277a1aec95cdb75cabf4612
 
 build:
   number: 0
@@ -43,16 +42,14 @@ build:
 
 requirements:
   host:
-    - python
     - pip
+    - python
     - hatchling
   run:
     - python
-    - opentelemetry-api ~=1.4
-    - setuptools >=16.0
-    - wrapt <2.0.0,>=1.0.0
-    - packaging >=18.0
-    - opentelemetry-semantic-conventions ==0.53b0
+    - opentelemetry-api
+    - setuptools
+    - wrapt 
 
 test:
   imports:
@@ -62,7 +59,6 @@ test:
     - opentelemetry-instrument --help
     - opentelemetry-bootstrap --help
   requires:
-    - python
     - pip
 
 about:
@@ -78,7 +74,5 @@ extra:
   recipe-maintainers:
     - ianaobi
   recipe-maintainers:
-    - rxm7706
     - twoodwark
     - mariusvniekerk
-    - conda-forge/opentelemetry-api
