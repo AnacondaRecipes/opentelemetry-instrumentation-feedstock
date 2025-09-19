@@ -25,8 +25,8 @@ requirements:
   run:
     - python
     - opentelemetry-api ~=1.4
-    - opentelemetry-semantic-conventions 0.58b0
-    - wrapt >=1.0.0,< 2.0.0
+    - opentelemetry-semantic-conventions ==0.58b0
+    - wrapt >=1.0.0,<2.0.0
     - packaging >=18.0
 
 # Unable to run the tests, opentelemetry-test-utils is not in the main channel. No module named 'opentelemetry.test'.
