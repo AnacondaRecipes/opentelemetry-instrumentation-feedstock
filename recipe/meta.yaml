@@ -1,5 +1,5 @@
 {% set name = "opentelemetry-instrumentation" %}
-{% set version = "0.58b0" %}
+{% set version = "0.59b0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_')}}-{{ version }}.tar.gz
-  sha256: df640f3ac715a3e05af145c18f527f4422c6ab6c467e40bd24d2ad75a00cb705
+  sha256: 6010f0faaacdaf7c4dff8aac84e226d23437b331dcda7e70367f6d73a7db1adc
 
 build:
   number: 0
@@ -25,7 +25,7 @@ requirements:
   run:
     - python
     - opentelemetry-api ~=1.4
-    - opentelemetry-semantic-conventions ==0.58b0
+    - opentelemetry-semantic-conventions ==0.59b0
     - wrapt >=1.0.0,<2.0.0
     - packaging >=18.0
 
@@ -42,15 +42,15 @@ test:
 
 about:
   home: https://github.com/open-telemetry/opentelemetry-python
-  summary: Instrumentation Tools & Auto Instrumentation for OpenTelemetry Python
   license_family: APACHE
   license: Apache-2.0
   license_file: LICENSE.txt
+  summary: Instrumentation Tools & Auto Instrumentation for OpenTelemetry Python
   description: |
     OpenTelemetry Instrumentation provides tools and auto-instrumentation for OpenTelemetry Python.
     This package is intended to be used in conjunction with the OpenTelemetry SDK.
   dev_url: https://github.com/open-telemetry/opentelemetry-python
-  doc_url: https://opentelemetry.io/docs/getting-started/dev/
+  doc_url: https://opentelemetry.io/docs/getting-started/dev
 
 extra:
   recipe-maintainers:
