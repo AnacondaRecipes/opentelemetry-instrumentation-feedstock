@@ -1,13 +1,13 @@
 {% set name = "opentelemetry-instrumentation" %}
-{% set version = "0.61b0" %}
+{% set version = "0.64b0" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_')}}-{{ version }}.tar.gz
-  sha256: cb21b48db738c9de196eba6b805b4ff9de3b7f187e4bbf9a466fa170514f1fc7
+  sha256: b47d528dead6271d7743114417eb67fc915bd9258111c48dbf9a4951d2efa88d
 
 build:
   number: 0
@@ -15,7 +15,7 @@ build:
     - opentelemetry-instrument = opentelemetry.instrumentation.auto_instrumentation:run
     - opentelemetry-bootstrap = opentelemetry.instrumentation.bootstrap:run
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: True  # [py<39]
+  skip: true  # [py<310]
 
 requirements:
   host:
@@ -24,9 +24,9 @@ requirements:
     - hatchling
   run:
     - python
-    - opentelemetry-api ~=1.4
-    - opentelemetry-semantic-conventions ==0.61b0
-    - wrapt >=1.0.0,<2.0.0
+    - opentelemetry-api >=1.4,<2
+    - opentelemetry-semantic-conventions =={{ version }}
+    - wrapt >=1.0.0,<3.0.0
     - packaging >=18.0
 
 # Unable to run the tests, opentelemetry-test-utils is not in the main channel. No module named 'opentelemetry.test'.
